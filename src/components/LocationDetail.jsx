@@ -5,14 +5,10 @@ function LocationDetail({ location, onClear }) {
 
   return (
     <section className="location-detail">
-      <h3>{location.name} Details</h3>
+      <h3>{location.name} {location.type} Details</h3>
 
       <p>
-        <strong>Region:</strong> {location.region}
-      </p>
-
-      <p>
-        <strong>Type:</strong> {location.type}
+        This is a {location.type.toLowerCase()} located in {location.region}.
       </p>
 
       <p>

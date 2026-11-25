@@ -126,3 +126,13 @@ button:hover {
   text-decoration: none;
   color: inherit;
 }
+
+.loading {
+  color: #555555;
+  font-style: italic;
+}
+
+.error {
+  color: #b00020;
+  font-weight: bold;
+}

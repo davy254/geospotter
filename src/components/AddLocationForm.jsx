@@ -76,6 +76,10 @@ function AddLocationForm() {
     setSuccessMessage(
       `${name} added. It currently exists only in local app state.`
     );
+
+    setTimeout(() => {
+      setSuccessMessage(null);
+    }, 3000);
   }
 
   return (

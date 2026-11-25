@@ -65,6 +65,8 @@ http://localhost:5173/
 - Navigate to location detail pages using URLs
 - Fetch location data from an API endpoint
 - Show loading and error states
+- Refresh location data manually
+- Retry failed API requests
 
 ## Planned Features
 

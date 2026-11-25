@@ -43,6 +43,10 @@ function App() {
             onTypeChange={setSelectedType}
           />
         </div>
+        <p>
+          Showing {filteredLocations.length} location
+          {filteredLocations.length === 1 ? "" : "s"}
+        </p>
 
         <LocationList locations={filteredLocations} />
       </main>

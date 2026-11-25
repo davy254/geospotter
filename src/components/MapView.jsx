@@ -68,9 +68,9 @@ function MapView({ locations = [], latitude, longitude, zoom = 6 }) {
       const marker = L.marker([location.lat, location.lng]);
 
       marker.bindPopup(
-        `<strong>${location.name}</strong><br>
-         ${location.region}<br>
-         ${location.type}`
+        `<strong>${location.name} ${location.type}</strong><br>
+         ${location.region}
+         `
       );
 
       markersLayerRef.current.addLayer(marker);

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import LocationList from "../components/LocationList";
 import SearchBar from "../components/SearchBar";
 import TypeFilter from "../components/TypeFilter";
+import MapView from "../components/MapView";
 import { fetchLocations } from "../services/locationService";
 
 function HomePage() {
@@ -94,6 +95,13 @@ function HomePage() {
             Showing {filteredLocations.length} location
             {filteredLocations.length === 1 ? "" : "s"}
           </p>
+
+          <MapView
+            locations={filteredLocations}
+            latitude={0.15}
+            longitude={37.9}
+            zoom={6}
+          />
 
           <LocationList locations={filteredLocations} />
         </>

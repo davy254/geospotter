@@ -63,7 +63,6 @@ http://localhost:5173/
 
 ## Planned Features
 
-- Location details view
 - Interactive web map
 - API data
 - Saved or favorite locations

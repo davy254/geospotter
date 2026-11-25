@@ -1,12 +1,55 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LocationList from "../components/LocationList";
 import SearchBar from "../components/SearchBar";
 import TypeFilter from "../components/TypeFilter";
-import { locations } from "../data/locations";
+import { fetchLocations } from "../services/locationService";
 
 function HomePage() {
+  const [locations, setLocations] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   const [searchText, setSearchText] = useState("");
   const [selectedType, setSelectedType] = useState("All");
+
+  useEffect(() => {
+    let isActive = true;
+
+    async function loadLocations() {
+      try {
+        setIsLoading(true);
+        setError(null);
+
+        const data = await fetchLocations();
+
+        if (isActive) {
+          setLocations(data);
+        }
+      } catch (err) {
+        if (isActive) {
+          setError(err.message);
+        }
+      } finally {
+        if (isActive) {
+          setIsLoading(false);
+        }
+      }
+    }
+
+    loadLocations();
+
+    return () => {
+      isActive = false;
+    };
+  }, []);
+
+  if (isLoading) {
+    return <p className="loading">Loading locations...</p>;
+  }
+
+  if (error) {
+    return <p className="error">Error: {error}</p>;
+  }
 
   const locationTypes = [
     "All",

@@ -52,3 +52,24 @@ main {
   margin-top: 0;
   margin-bottom: 8px;
 }
+
+.controls {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.search-bar,
+.type-filter {
+  display: grid;
+  gap: 4px;
+  font-weight: bold;
+}
+
+.search-bar input,
+.type-filter select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}

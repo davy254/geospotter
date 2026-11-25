@@ -9,6 +9,8 @@ The app displays locations in Kenya with latitude and longitude coordinates. It 
 - React
 - React Router
 - Fetch API
+- Leaflet
+- OpenStreetMap tiles
 - Vite
 - JavaScript
 - CSS
@@ -67,6 +69,9 @@ http://localhost:5173/
 - Show loading and error states
 - Refresh location data manually
 - Retry failed API requests
+- Display locations on an interactive web map
+- Show selected location on a detail page map
+
 
 ## Planned Features
 

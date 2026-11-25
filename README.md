@@ -55,10 +55,11 @@ http://localhost:5173/
 
 ## Current Features
 
-- Display locations in Kenya
-- Show latitude and longitude
+- View locations in Kenya
 - Search locations by name
 - Filter locations by type
+- View selected location details
+- Clear selected location
 
 ## Planned Features
 

@@ -1,16 +1,100 @@
-# React + Vite
+# GeoSpotter
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+GeoSpotter is a React learning project built around location-based data.
 
-Currently, two official plugins are available:
+The app displays locations in Kenya with latitude and longitude coordinates. It is being built step by step to learn React components, props, state, filtering, and eventually web mapping.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tech Stack
 
-## React Compiler
+- React
+- Vite
+- JavaScript
+- Git
+- GitHub
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Getting Started
 
-## Expanding the Oxlint configuration
+### Prerequisites
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+Make sure you have these installed:
+
+- Node.js
+- Git
+
+### Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/davy254/geospotter.git
+```
+
+Move into the project folder:
+
+```bash
+cd geospotter
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Open the app in your browser:
+
+```text
+http://localhost:5173/
+```
+
+## Current Features
+
+- Display locations in Kenya
+- Show latitude and longitude
+- Search locations by name
+- Filter locations by type
+
+## Planned Features
+
+- Location details view
+- Interactive web map
+- API data
+- Saved or favorite locations
+
+## Project Structure
+
+```text
+src/
+  components/
+  data/
+  App.jsx
+  main.jsx
+```
+
+## Coordinate Format
+
+Locations are stored using decimal degrees:
+
+```js
+lat: latitude
+lng: longitude
+```
+
+This format is suitable for later use with web mapping libraries.
+
+## Commit Convention
+
+This project uses Conventional Commits:
+
+- `feat`: a new feature
+- `fix`: a bug fix
+- `chore`: maintenance or setup
+- `docs`: documentation updates
+- `style`: styling or formatting
+- `refactor`: code improvement without changing behavior

@@ -3,6 +3,7 @@ import LocationList from "../components/LocationList";
 import SearchBar from "../components/SearchBar";
 import TypeFilter from "../components/TypeFilter";
 import MapView from "../components/MapView";
+import AddLocationForm from "../components/AddLocationForm";
 import { useLocations } from "../context/LocationsContext";
 
 function HomePage() {
@@ -74,6 +75,8 @@ function HomePage() {
             Showing {filteredLocations.length} location
             {filteredLocations.length === 1 ? "" : "s"}
           </p>
+
+          <AddLocationForm />
 
           <MapView
             locations={filteredLocations}

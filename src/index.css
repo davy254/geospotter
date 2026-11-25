@@ -143,3 +143,42 @@ button:hover {
   border: 1px solid #d9d9d9;
   margin-bottom: 16px;
 }
+
+.add-location-form {
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  display: grid;
+  gap: 12px;
+}
+
+.add-location-form h3 {
+  margin: 0;
+}
+
+.add-location-form label {
+  display: grid;
+  gap: 4px;
+  font-weight: bold;
+}
+
+.add-location-form input,
+.add-location-form select {
+  padding: 8px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.success {
+  color: #14804a;
+  font-weight: bold;
+}

@@ -58,24 +58,34 @@ function MapView({ locations = [], latitude, longitude, zoom = 6 }) {
   }, [latitude, longitude, zoom]);
 
   useEffect(() => {
-    if (!markersLayerRef.current) {
-      return;
-    }
+  if (!markersLayerRef.current) {
+    return;
+  }
 
-    markersLayerRef.current.clearLayers();
+  markersLayerRef.current.clearLayers();
 
-    locations.forEach((location) => {
-      const marker = L.marker([location.lat, location.lng]);
+  const bounds = L.latLngBounds();
 
-      marker.bindPopup(
-        `<strong>${location.name} ${location.type}</strong><br>
-         ${location.region}
-         `
-      );
+  locations.forEach((location) => {
+    const marker = L.marker([location.lat, location.lng]);
 
-      markersLayerRef.current.addLayer(marker);
+    marker.bindPopup(
+      `<strong>${location.name}</strong><br>
+       ${location.region}<br>
+       ${location.type}`
+    );
+
+    markersLayerRef.current.addLayer(marker);
+
+    bounds.extend([location.lat, location.lng]);
+  });
+
+  if (locations.length > 0 && mapRef.current) {
+    mapRef.current.fitBounds(bounds, {
+      padding: [20, 20],
     });
-  }, [locations]);
+  }
+}, [locations]);
 
   return <div ref={mapContainerRef} className="map-view" />;
 }

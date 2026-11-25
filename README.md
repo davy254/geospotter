@@ -71,7 +71,9 @@ http://localhost:5173/
 - Retry failed API requests
 - Display locations on an interactive web map
 - Show selected location on a detail page map
-
+- Add new locations using a form
+- Validate latitude and longitude
+- Share location state using React Context
 
 
 ## Project Structure

@@ -12,44 +12,24 @@ function HomePage() {
   const [searchText, setSearchText] = useState("");
   const [selectedType, setSelectedType] = useState("All");
 
-  useEffect(() => {
-    let isActive = true;
+  async function loadLocations() {
+    try {
+      setIsLoading(true);
+      setError(null);
 
-    async function loadLocations() {
-      try {
-        setIsLoading(true);
-        setError(null);
+      const data = await fetchLocations();
 
-        const data = await fetchLocations();
-
-        if (isActive) {
-          setLocations(data);
-        }
-      } catch (err) {
-        if (isActive) {
-          setError(err.message);
-        }
-      } finally {
-        if (isActive) {
-          setIsLoading(false);
-        }
-      }
+      setLocations(data);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setIsLoading(false);
     }
+  }
 
+  useEffect(() => {
     loadLocations();
-
-    return () => {
-      isActive = false;
-    };
   }, []);
-
-  if (isLoading) {
-    return <p className="loading">Loading locations...</p>;
-  }
-
-  if (error) {
-    return <p className="error">Error: {error}</p>;
-  }
 
   const locationTypes = [
     "All",
@@ -67,6 +47,20 @@ function HomePage() {
     return matchesSearch && matchesType;
   });
 
+  if (error) {
+    return (
+      <>
+        <h2>Locations in Kenya</h2>
+
+        <p className="error">Error: {error}</p>
+
+        <button type="button" onClick={loadLocations}>
+          Try again
+        </button>
+      </>
+    );
+  }
+
   return (
     <>
       <h2>Locations in Kenya</h2>
@@ -82,14 +76,28 @@ function HomePage() {
           selectedType={selectedType}
           onTypeChange={setSelectedType}
         />
+
+        <button
+          type="button"
+          onClick={loadLocations}
+          disabled={isLoading}
+        >
+          {isLoading ? "Refreshing..." : "Refresh locations"}
+        </button>
       </div>
 
-      <p>
-        Showing {filteredLocations.length} location
-        {filteredLocations.length === 1 ? "" : "s"}
-      </p>
+      {isLoading ? (
+        <p className="loading">Loading locations...</p>
+      ) : (
+        <>
+          <p>
+            Showing {filteredLocations.length} location
+            {filteredLocations.length === 1 ? "" : "s"}
+          </p>
 
-      <LocationList locations={filteredLocations} />
+          <LocationList locations={filteredLocations} />
+        </>
+      )}
     </>
   );
 }

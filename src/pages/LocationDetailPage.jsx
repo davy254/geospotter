@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { fetchLocationById } from "../services/locationService";
+import MapView from "../components/MapView";
 
 function LocationDetailPage() {
   const { locationId } = useParams();
@@ -94,9 +95,12 @@ function LocationDetailPage() {
         <strong>GeoJSON order:</strong> [{location.lng.toFixed(6)}, {location.lat.toFixed(6)}]
       </p>
 
-      <div className="map-placeholder">
-        Map will be displayed here in a later module.
-      </div>
+      <MapView
+        locations={[location]}
+        latitude={location.lat}
+        longitude={location.lng}
+        zoom={10}
+      />
 
       <Link className="button-link" to="/">
         Back to locations

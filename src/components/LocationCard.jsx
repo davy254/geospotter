@@ -1,4 +1,6 @@
-function LocationCard({ name, region, type, lat, lng, onViewDetails }) {
+import { Link } from "react-router-dom";
+
+function LocationCard({ id, name, region, type, lat, lng }) {
   return (
     <article className="location-card">
       <h3>{name}</h3>
@@ -15,9 +17,9 @@ function LocationCard({ name, region, type, lat, lng, onViewDetails }) {
         <strong>Coordinates:</strong> {lat.toFixed(4)}, {lng.toFixed(4)}
       </p>
 
-      <button type="button" onClick={onViewDetails}>
+      <Link className="button-link" to={`/location/${id}`}>
         View details
-      </button>
+      </Link>
     </article>
   );
 }

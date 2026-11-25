@@ -1,16 +1,15 @@
 import Header from "./components/Header";
-import Footer from "./components/Footer";
+import LocationList from "./components/LocationList";
+import { locations } from "./data/locations";
 
 function App() {
   return (
     <div>
       <Header />
       <main>
-        <h2>Welcome</h2>
-        <p>This app will manage geographical points of interest.</p>
+        <h2>Locations in Kenya</h2>
+        <LocationList locations={locations} />
       </main>
-      <Footer />
-
     </div>
   );
 }

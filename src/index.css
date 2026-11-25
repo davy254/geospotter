@@ -121,3 +121,8 @@ button:hover {
 .button-link:hover {
   opacity: 0.9;
 }
+
+.header-link {
+  text-decoration: none;
+  color: inherit;
+}

@@ -1,13 +1,29 @@
 const API_URL = "/api/locations.json";
 
-export async function fetchLocations() {
-  const response = await fetch(API_URL);
+async function fetchJson(url) {
+  const response = await fetch(url, {
+    headers: {
+      Accept: "application/json",
+    },
+  });
 
   if (!response.ok) {
     throw new Error(`Request failed with status ${response.status}`);
   }
 
+  const contentType = response.headers.get("content-type") || "";
+
+  if (!contentType.includes("application/json")) {
+    throw new Error(
+      "Response was not JSON. Check the API URL or file path."
+    );
+  }
+
   return response.json();
+}
+
+export async function fetchLocations() {
+  return fetchJson(API_URL);
 }
 
 export async function fetchLocationById(id) {

@@ -1,4 +1,4 @@
-function LocationCard({ name , region, type, lat, long}){
+function LocationCard({ name , region, type, lat, lng}){
     return (
         <article className="location-card">
             <h3>{name}</h3>
@@ -9,7 +9,7 @@ function LocationCard({ name , region, type, lat, long}){
                 <strong>Type:</strong>{type}
             </p>
             <p>
-                <strong>Coordinates:</strong>{lat.toFixed(4)},{long.toFixed(4)}
+                <strong>Coordinates:</strong>{lat.toFixed(4)},{lng.toFixed(4)}
             </p>
         </article>
     );

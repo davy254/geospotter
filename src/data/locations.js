@@ -79,4 +79,12 @@ export const locations = [
     lat: -4.3,
     lng: 39.566666,
   },
+  {
+  id: 11,
+  name: "Lake Turkana",
+  region: "Turkana County",
+  type: "Lake",
+  lat: 3.2,
+  lng: 36.1,
+},
 ];

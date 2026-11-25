@@ -73,3 +73,37 @@ main {
   border-radius: 4px;
   font-size: 16px;
 }
+
+button {
+  padding: 8px 12px;
+  border: 1px solid #1f1f1f;
+  border-radius: 4px;
+  background-color: #1f1f1f;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.location-detail {
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  background-color: #f8f8f8;
+}
+
+.location-detail h3 {
+  margin-top: 0;
+}
+
+.map-placeholder {
+  border: 2px dashed #bbbbbb;
+  border-radius: 8px;
+  padding: 24px;
+  text-align: center;
+  color: #555555;
+  margin-bottom: 12px;
+}

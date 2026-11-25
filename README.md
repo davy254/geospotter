@@ -7,10 +7,11 @@ The app displays locations in Kenya with latitude and longitude coordinates. It 
 ## Tech Stack
 
 - React
+- React Router
 - Vite
 - JavaScript
-- Git
-- GitHub
+- CSS
+- Git/GitHub
 
 ## Getting Started
 
@@ -60,6 +61,7 @@ http://localhost:5173/
 - Filter locations by type
 - View selected location details
 - Clear selected location
+- Navigate to location detail pages using URLs
 
 ## Planned Features
 

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Header from "./components/Header";
 import LocationList from "./components/LocationList";
+import LocationDetail from "./components/LocationDetail";
 import SearchBar from "./components/SearchBar";
 import TypeFilter from "./components/TypeFilter";
 import { locations } from "./data/locations";
@@ -8,6 +9,7 @@ import { locations } from "./data/locations";
 function App() {
   const [searchText, setSearchText] = useState("");
   const [selectedType, setSelectedType] = useState("All");
+  const [selectedLocation, setSelectedLocation] = useState(null);
 
   const locationTypes = [
     "All",
@@ -28,6 +30,7 @@ function App() {
   return (
     <div>
       <Header />
+
       <main>
         <h2>Locations in Kenya</h2>
 
@@ -43,12 +46,23 @@ function App() {
             onTypeChange={setSelectedType}
           />
         </div>
+
         <p>
           Showing {filteredLocations.length} location
           {filteredLocations.length === 1 ? "" : "s"}
         </p>
 
-        <LocationList locations={filteredLocations} />
+        {selectedLocation && (
+          <LocationDetail
+            location={selectedLocation}
+            onClear={() => setSelectedLocation(null)}
+          />
+        )}
+
+        <LocationList
+          locations={filteredLocations}
+          onSelectLocation={setSelectedLocation}
+        />
       </main>
     </div>
   );

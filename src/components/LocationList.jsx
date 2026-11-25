@@ -1,6 +1,6 @@
 import LocationCard from "./LocationCard";
 
-function LocationList({ locations }) {
+function LocationList({ locations, onSelectLocation }) {
   if (!locations || locations.length === 0) {
     return <p>No locations found.</p>;
   }
@@ -15,6 +15,7 @@ function LocationList({ locations }) {
             type={location.type}
             lat={location.lat}
             lng={location.lng}
+            onViewDetails={() => onSelectLocation(location)}
           />
         </li>
       ))}

@@ -25,11 +25,3 @@ async function fetchJson(url) {
 export async function fetchLocations() {
   return fetchJson(API_URL);
 }
-
-export async function fetchLocationById(id) {
-  const locations = await fetchLocations();
-
-  return locations.find(
-    (location) => location.id === Number(id)
-  );
-}

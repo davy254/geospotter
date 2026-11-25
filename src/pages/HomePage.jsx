@@ -1,36 +1,15 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import LocationList from "../components/LocationList";
 import SearchBar from "../components/SearchBar";
 import TypeFilter from "../components/TypeFilter";
 import MapView from "../components/MapView";
-import { fetchLocations } from "../services/locationService";
+import { useLocations } from "../context/LocationsContext";
 
 function HomePage() {
-  const [locations, setLocations] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const { locations, isLoading, error, loadLocations } = useLocations();
 
   const [searchText, setSearchText] = useState("");
   const [selectedType, setSelectedType] = useState("All");
-
-  async function loadLocations() {
-    try {
-      setIsLoading(true);
-      setError(null);
-
-      const data = await fetchLocations();
-
-      setLocations(data);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setIsLoading(false);
-    }
-  }
-
-  useEffect(() => {
-    loadLocations();
-  }, []);
 
   const locationTypes = [
     "All",

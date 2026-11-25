@@ -1,45 +1,11 @@
-import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { fetchLocationById } from "../services/locationService";
+import { useLocations } from "../context/LocationsContext";
 import MapView from "../components/MapView";
 
 function LocationDetailPage() {
   const { locationId } = useParams();
 
-  const [location, setLocation] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    let isActive = true;
-
-    async function loadLocation() {
-      try {
-        setIsLoading(true);
-        setError(null);
-
-        const data = await fetchLocationById(locationId);
-
-        if (isActive) {
-          setLocation(data);
-        }
-      } catch (err) {
-        if (isActive) {
-          setError(err.message);
-        }
-      } finally {
-        if (isActive) {
-          setIsLoading(false);
-        }
-      }
-    }
-
-    loadLocation();
-
-    return () => {
-      isActive = false;
-    };
-  }, [locationId]);
+  const { locations, isLoading, error, loadLocations } = useLocations();
 
   if (isLoading) {
     return <p className="loading">Loading location details...</p>;
@@ -49,14 +15,23 @@ function LocationDetailPage() {
     return (
       <section className="location-detail">
         <h3>Error</h3>
+
         <p className="error">Error: {error}</p>
 
         <Link className="button-link" to="/">
           Back to locations
         </Link>
+
+        <button type="button" onClick={loadLocations}>
+          Try again
+        </button>
       </section>
     );
   }
+
+  const location = locations.find(
+    (item) => item.id === Number(locationId)
+  );
 
   if (!location) {
     return (
@@ -73,7 +48,7 @@ function LocationDetailPage() {
 
   return (
     <section className="location-detail">
-      <h3>{location.name} {location.type} Details</h3>
+      <h3>{location.name} Details</h3>
 
       <p>
         <strong>Region:</strong> {location.region}

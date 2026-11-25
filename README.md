@@ -73,11 +73,6 @@ http://localhost:5173/
 - Show selected location on a detail page map
 
 
-## Planned Features
-
-- Interactive web map
-- API data
-- Saved or favorite locations
 
 ## Project Structure
 
